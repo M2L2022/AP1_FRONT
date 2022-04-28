@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import AuthContext, { useAuth } from "../../context/AuthProvider";
-import axios from "axios";
+import axios  from "../../config/axios";
 
 
 
@@ -32,7 +32,7 @@ function LoginForm() {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8000/user/identification", ({ email, password}), {headers: { "Content-Type": "application/json"}, widthcredentials: true});
+      const response = await axios.post("/user/identification", ({ email, password}));
       console.log(JSON.stringify(response?.data));
       setAuth({ email, password})
       setEmail("");
