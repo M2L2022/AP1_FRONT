@@ -3,7 +3,7 @@ import "./LoginForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import AuthContext from "../../context/AuthProvider";
+import AuthContext, { useAuth } from "../../context/AuthProvider";
 import axios from "axios";
 
 
@@ -56,7 +56,7 @@ function LoginForm() {
   return (
  
     <>
-    { success ? ( <div className="formLogin"> <h1>Vous etes connecté !!</h1> <br /> <p> <a href="#">Retour à l'acceuil</a> </p> </div> ) :(
+    { success ? ( <div className="formLogin"> <h1>Vous etes connecté !!</h1> <br /> <p> <a href="http://localhost:3000/">Retour à l'acceuil</a> </p> </div> ) :(
 
       
     <div className="formLogin">
@@ -104,7 +104,7 @@ function LoginForm() {
             <div className="ligne4"></div>
           </div>
           <input type="submit" value="SE CONNECTER" className="buttonInp" />
-          <p>Besoin de réserver ?!<br/> <span className="line">{/*mettre la route pour l'inscription*/}<a href="#">S'inscrire</a></span></p>
+          <p>Besoin de réserver ?!<br/> <span className="line">{/*mettre la route pour l'inscription*/}<a href="http://localhost:3000/Inscriptions">S'inscrire</a></span></p>
         </div>
 
       </form>
