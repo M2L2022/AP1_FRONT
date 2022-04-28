@@ -1,104 +1,120 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, {useState, useRef, useEffect, useContext} from "react";
 import "./LoginForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { useAuth } from "../context/auth";
+import AuthContext from "../../context/AuthProvider";
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+
+
 
 
 function LoginForm() {
 
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const { setAuthTokens } = useAuth();
+  const { setAuth } = useContext(AuthContext);
+  const userRef = useRef();
+  const errRef = useRef();
 
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+  const [success, setSuccess] = useState(false);
 
-  async function postLogin(e) {
-    console.log("ok");
-  e.preventDefault();
-  try {
-    const result = await axios.post("http://localhost:8000/admin/user/login", {
-      email: emailRef.current.value,
-      password: passwordRef.current.value
-    })
-    if (result.status === 200) {
-      setAuthTokens(result.data);
-      setLoggedIn(true);
-    } else {
-      setIsError(true);
+  useEffect(() => {
+    userRef.current.focus();
+  }, [])
+
+  useEffect(() => {
+    setErrMsg("");
+  }, [email, password])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:8000/user/identification", ({ email, password}), {headers: { "Content-Type": "application/json"}, widthcredentials: true});
+      console.log(JSON.stringify(response?.data));
+      setAuth({ email, password})
+      setEmail("");
+      setPassword("");
+      setSuccess(true);
+    } catch (err) {
+      if (!err?.response) {
+          setErrMsg("Le serveur ne répond pas")
+      } else if (err.response?.status === 400) {
+        setErrMsg("Mot de passe ou email oublié");
+      } else if (err.response?.status === 401) {
+        setErrMsg("Accés refusé");
+      } else {
+        setErrMsg("Authentification refusé")
+      }
+      errRef.current.focus();
     }
-  } catch (error) {
-    setIsError(true);
-  } 
-
-}
-
-useEffect(() => {
-  if (isLoggedIn){
-    navigate("/")
-  }
-},[isLoggedIn])
-
-
-
-
-
-
+    
+  }  
+ 
   return (
-    <div>
-      <form onSubmit={postLogin}>
-        <div class="formLogin">
-          <h2 class="titreForm">Identification</h2>
-          { isError && <p>Erreur d'authentification</p>}
+ 
+    <>
+    { success ? ( <div className="formLogin"> <h1>Vous etes connecté !!</h1> <br /> <p> <a href="#">Retour à l'acceuil</a> </p> </div> ) :(
+
+      
+    <div className="formLogin">
+     
+      <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+      <form onSubmit={handleSubmit}>
+        <div>
+        
+          <h2 className="titreForm">Identification</h2>
           <div>
-            <label for="email" class="labelEmailLogin">
+            <label htmlFor="email" className="labelEmailLogin">
               Email
             </label>
             <input
-              ref={emailRef}
               type="text"
-              name="emailInp"
+              // name="emailInp"
               id="email"
-              class="emailInp"
+              ref={userRef}
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              className="emailInp"
               required
-              maxlength="35"
             ></input>
-            <FontAwesomeIcon
+             <FontAwesomeIcon
               icon={faEnvelope}
-              class="logo-mail"
+              className="logo-mail"
             ></FontAwesomeIcon>
-            <div class="ligne3"></div>
+            <div className="ligne3"></div>
           </div>
           <div>
-            <label for="password" class="labelPassword">
+            <label htmlFor="password" class="labelPassword">
               Password
             </label>
             <input
-              ref= {passwordRef}
-              type="text"
-              name="passwordInp"
+              type="password"
+              // name="passwordInp"
               id="password"
-              class="passwordInp"
+              ref={userRef}
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+              className="passwordInp"
               required
-              maxlength="35"
             ></input>
-            <FontAwesomeIcon icon={faLock} class="logo-lock"></FontAwesomeIcon>
-            <div class="ligne4"></div>
+            <FontAwesomeIcon icon={faLock} className="logo-lock"></FontAwesomeIcon>
+            <div className="ligne4"></div>
           </div>
-         
-          <input type="submit" value="SE CONNECTER" class="buttonInp" />
-            
-          
+          <input type="submit" value="SE CONNECTER" className="buttonInp" />
+          <p>Besoin de réserver ?!<br/> <span className="line">{/*mettre la route pour l'inscription*/}<a href="#">S'inscrire</a></span></p>
         </div>
+
       </form>
-    </div>
+      
+      </div>
+    
+    )}
+    </>
   );
   
-  }
 
+  }
 export default LoginForm;
