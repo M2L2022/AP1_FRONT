@@ -2,66 +2,86 @@ import "./FormResa.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHotel } from "@fortawesome/free-solid-svg-icons";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
-import React, { useRef } from "react";
-import axios from "axios";
+import React, { useRef, useEffect, useState } from "react";
+import axios from "../../config/axios";
 
 function FormResa() {
+  const [resa, setResa] = useState([]);
+  const getSalles = async () => {
+    try {
+      const res = await axios.get("/admin/salle/room");
+      setResa(res.data.success);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  useEffect(() => {
+    getSalles();
+  }, []);
+
   const dateRef = useRef();
   const salleRef = useRef();
   const handleResa = async (e) => {
     e.preventDefault();
 
-    const body = {date:dateRef.current.value, salle:salleRef.current.value, repas: 3001, organisateur: 105 }
-    
+    const body = {
+      date: dateRef.current.value,
+      salle: salleRef.current.value,
+      repas: 3001,
+      organisateur: 105,
+    };
 
     try {
-        axios.post("http://localhost:8000/reunions/reunion", body);
+      axios.post("http://localhost:8000/reunions/reunion", body);
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
-  }
+  };
   return (
     <div>
       <form onSubmit={handleResa}>
-        <div class="containerFormResa">
-          <h2 class="titreForm">Reservation</h2>
+        <div className="containerFormResa">
+          <h2 className="titreForm">Reservation</h2>
           <div>
-            <label for="dateResa" class="labelResa"></label>
+            <label htmlFor="dateResa" className="labelResa"></label>
             <input
               type="date"
               name="ResaDate"
               id="Resa"
-              class="ResaInp"
+              className="ResaInp"
               ref={dateRef}
             ></input>
             <FontAwesomeIcon
               icon={faCalendar}
-              class="logo-Resa"
+              className="logo-Resa"
             ></FontAwesomeIcon>
-            <div class="ligne3"></div>
+            <div className="ligne3"></div>
           </div>
           <div>
-            <label for="SelectRoom" class="labelSelectRoom"></label>
+            <label htmlFor="SelectRoom" className="labelSelectRoom"></label>
             <select
               name="SelectRoom"
               id="SelectRoom"
-              class="SelectRoomInp"
+              className="SelectRoomInp"
               ref={salleRef}
             >
               <option>Selectionnez une salle</option>
-              <option value="1001">Majorelle</option>
+              {resa.map((item) => (
+                <option key={`room-${item.ID_SALLE}`} value={item.ID_SALLE}>{item.NOM_SALLE}</option>
+              ))}
+              {/* <option value="1001">Majorelle</option>
               <option value="Gruber">Gruber</option>
               <option value="Lamour">Lamour</option>
               <option value="Daume">Daume</option>
-              <option value="Baccarat">Baccarat</option>
+              <option value="Baccarat">Baccarat</option> */}
             </select>
             <FontAwesomeIcon
               icon={faHotel}
-              class="logo-SelectRoom"
+              className="logo-SelectRoom"
             ></FontAwesomeIcon>
-            <div class="ligne4"></div>
+            <div className="ligne4"></div>
           </div>
-          <input type="submit" value="reserver" class="buttonInp" />
+          <input type="submit" value="reserver" className="buttonInp" />
         </div>
       </form>
     </div>
