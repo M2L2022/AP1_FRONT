@@ -20,7 +20,7 @@
     text-transform: uppercase;
     color: var(--texte);
 }
-.containerForm .prenomInp, .nomInp, .emailInp, .passwordInp, .telephoneInp, .ligueInp {
+.containerForm .prenomInp, .nomInp, .emailInp, .passwordInp, .telephoneInp, .SelectLigueInp {
     display: block;
     margin: 0px auto;
     outline: 0;
@@ -62,12 +62,13 @@
     left: 125px;
     top: 400px;
 }
-.containerForm .ligueInp {
+.containerForm .SelectLigueInp {
     position: absolute;
+    height: 50px;
     left: 450px;
-    top: 400px;
+    top: 389px;
 }
-.containerForm .labelPrenom, .labelNom, .labelEmail, .labelPassword, .labelTelephone, .labelLigue {
+.containerForm .labelPrenom, .labelNom, .labelEmail, .labelPassword, .labelTelephone, .labelSelectLigue {
     font-family: var(--typo_texte);
     text-transform: uppercase;
     color: var(--texte);
@@ -97,7 +98,7 @@
     left: 110px;
     top: 380px;
 }
-.containerForm .labelLigue{
+.containerForm .labelSelectLigue{
     position: absolute;
     left: 435px;
     top: 380px;
@@ -259,11 +260,11 @@
         left: 110px;
         top: 335px;
     }
-    .containerForm .labelLigue {
+    .containerForm .labelSelectLigue {
         left: 110px;
         top: 445px;
     }
-    .containerForm .ligueInp {
+    .containerForm .SelectLigueInp {
         left: 125px;
         top: 465px;
     }
@@ -288,10 +289,10 @@
         left: 40%;
         transform: translateX(-50%);
     }
-    .containerForm .labelPrenom, .labelNom, .labelEmail, .labelLigue, .labelPassword, .labelTelephone {
+    .containerForm .labelPrenom, .labelNom, .labelEmail, .labelSelectLigue, .labelPassword, .labelTelephone {
         left: 59px;
     }
-    .containerForm .emailInp, .nomInp, .ligueInp, .prenomInp, .passwordInp, .telephoneInp {
+    .containerForm .emailInp, .nomInp, .SelectLigueInp, .prenomInp, .passwordInp, .telephoneInp {
         left: 20%;
     }
     .containerForm .logo-lock, .logo-mail, .logo-phone, .logo-trophy, .logo-user1, .logo-user2 {
@@ -315,10 +316,10 @@
     .containerForm .ligne4 {
         top: 365px;
     }
-    .containerForm .labelLigue {
+    .containerForm .labelSelectLigue {
         top: 445px;
     }
-    .containerForm .ligueInp {
+    .containerForm .SelectLigueInp {
         top: 465px;
     }
     .containerForm .ligne6 {
