@@ -46,8 +46,8 @@ function FormResa() {
             <label htmlFor="dateResa" className="labelResa"></label>
             <input
               type="date"
-              name="ResaDate"
-              id="Resa"
+              // name="ResaDate"
+              // id="Resa"
               className="ResaInp"
               ref={dateRef}
             ></input>
@@ -60,8 +60,8 @@ function FormResa() {
           <div>
             <label htmlFor="SelectRoom" className="labelSelectRoom"></label>
             <select
-              name="SelectRoom"
-              id="SelectRoom"
+              // name="SelectRoom"
+              // id="SelectRoom"
               className="SelectRoomInp"
               ref={salleRef}
             >
@@ -81,6 +81,27 @@ function FormResa() {
             ></FontAwesomeIcon>
             <div className="ligne4"></div>
           </div>
+
+          <div>
+            <label htmlFor="SelectMeal" className="labelSelectMeal"></label>
+            <select
+              // name="SelectRoom"
+              // id="SelectRoom"
+              className="SelectMealInp"
+              ref={salleRef}
+            >
+              <option>Selectionnez un repas</option>
+              {resa.map((item) => (
+                <option key={`room-${item.ID_SALLE}`} value={item.ID_SALLE}>{item.NOM_SALLE}</option>
+              ))}
+            </select>
+            {/* <FontAwesomeIcon
+              icon={faHotel}
+              className="logo-SelectRoom"
+            ></FontAwesomeIcon> */}
+            <div className="ligne5"></div>
+          </div>
+
           <input type="submit" value="reserver" className="buttonInp" />
         </div>
       </form>

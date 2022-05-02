@@ -20,7 +20,7 @@
     text-transform: uppercase;
     color: var(--texte);
 }
-.containerFormResa .ResaInp, .SelectRoomInp {
+.containerFormResa .ResaInp, .SelectRoomInp, .SelectMealInp {
     display: block;
     margin: 0px auto;
     outline: 0;
@@ -52,7 +52,16 @@
     padding-bottom: 0px;
     font-family: var(--typo_texte);
 }
-.containerFormResa .labelResa, .labelSelectRoom {
+.containerFormResa .SelectMealInp {
+    /* background-color: red; */
+    position: absolute;
+    height: 50px;
+    left: 280px;
+    top: 350px;
+    padding-bottom: 0px;
+    font-family: var(--typo_texte);
+}
+.containerFormResa .labelResa, .labelSelectRoom, .labelSelectMeal {
     font-family: var(--typo_texte);
     text-transform: uppercase;
     color: var(--texte);
@@ -66,6 +75,12 @@
     position: absolute;
     left: 435px;
     top: 251px;
+}
+.containerFormResa .labelSelectMeal {
+    position: absolute;
+    background-color: red;
+    left: 300px;
+    top: 100px;
 }
 .containerFormResa .ligne3 {
     width: 250px;
@@ -84,6 +99,15 @@
     position: absolute;
     left: 436px;
     top: 298px;
+}
+.containerFormResa .ligne5 {
+    width: 250px;
+    height: 3px;
+    border-radius: 5px;
+    background: var(--texte);
+    position: absolute;
+    left: 280px;
+    top: 397px;
 }
 .containerFormResa .buttonInp {
     position: absolute;
