@@ -53,7 +53,6 @@
     font-family: var(--typo_texte);
 }
 .containerFormResa .SelectMealInp {
-    /* background-color: red; */
     position: absolute;
     height: 50px;
     left: 280px;
@@ -78,7 +77,6 @@
 }
 .containerFormResa .labelSelectMeal {
     position: absolute;
-    background-color: red;
     left: 300px;
     top: 100px;
 }

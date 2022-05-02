@@ -21,14 +21,15 @@ function FormResa() {
 
   const dateRef = useRef();
   const salleRef = useRef();
+  const mealRef = useRef();
   const handleResa = async (e) => {
     e.preventDefault();
 
     const body = {
       date: dateRef.current.value,
       salle: salleRef.current.value,
-      repas: 3001,
-      organisateur: 105,
+      repas: mealRef.current.value,
+      organisateur: 105, //passer id de l'utilisateur connecté
     };
 
     try {
@@ -88,12 +89,15 @@ function FormResa() {
               // name="SelectRoom"
               // id="SelectRoom"
               className="SelectMealInp"
-              ref={salleRef}
+              ref={mealRef}
             >
               <option>Selectionnez un repas</option>
-              {resa.map((item) => (
+              {/* {resa.map((item) => (
                 <option key={`room-${item.ID_SALLE}`} value={item.ID_SALLE}>{item.NOM_SALLE}</option>
-              ))}
+              ))} */}
+              <option value="3001">Petit Déjeuner</option>
+              <option value="3002">Collation</option>
+              <option value="3003">Encas</option>
             </select>
             {/* <FontAwesomeIcon
               icon={faHotel}
