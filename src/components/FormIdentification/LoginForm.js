@@ -5,7 +5,7 @@ import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import AuthContext, { useAuth } from "../../context/AuthProvider";
 import axios  from "../../config/axios";
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -56,7 +56,7 @@ function LoginForm() {
   return (
  
     <>
-    { success ? ( <div className="formLogin"> <h1>Vous etes connecté !!</h1> <br /> <p> <a href="http://localhost:3000/">Retour à l'acceuil</a> </p> </div> ) :(
+    { success ? ( <div className="formLogin"> <h1>Vous etes connecté !!</h1> <br /> <p> <Link to="/">Retour à l'acceuil</Link> </p> </div> ) :(
 
       
     <div className="formLogin">

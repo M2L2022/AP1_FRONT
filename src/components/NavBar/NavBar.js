@@ -3,19 +3,19 @@ import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
 
 import logo from "../../assets/img/logo1.png";
-import { useAuth } from "../../context/AuthProvider";
+import { useAuth} from "../../context/AuthProvider";
 import "./NavBar.css";
 
 const Navbar = () => {
 
-  const {auth, setAuth} = useAuth();
+  const {auth,logOut} = useAuth();
 
   const navLinks = [
     { text: "Accueil", chemin: "/" },
     { text: "Inscriptions", chemin: "/Inscriptions" },
     { text: "Reservations", chemin: "/Reservations", disabled: !auth},
     { text: "Login", chemin: "/Login", disabled: auth },
-    { text: "Log Out", chemin:"/", onClick: () => setAuth(false), disabled: !auth },
+    { text: "Log Out", chemin:"/", onClick: logOut, disabled: !auth },
     { text: "Contact", chemin: "/contact" },
   ];
 
