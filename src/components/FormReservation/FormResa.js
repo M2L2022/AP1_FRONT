@@ -21,14 +21,15 @@ function FormResa() {
 
   const dateRef = useRef();
   const salleRef = useRef();
+  const mealRef = useRef();
   const handleResa = async (e) => {
     e.preventDefault();
 
     const body = {
       date: dateRef.current.value,
       salle: salleRef.current.value,
-      repas: 3001,
-      organisateur: 105,
+      repas: mealRef.current.value,
+      organisateur: 105, //passer id de l'utilisateur connecté
     };
 
     try {
@@ -46,8 +47,8 @@ function FormResa() {
             <label htmlFor="dateResa" className="labelResa"></label>
             <input
               type="date"
-              name="ResaDate"
-              id="Resa"
+              // name="ResaDate"
+              // id="Resa"
               className="ResaInp"
               ref={dateRef}
             ></input>
@@ -60,8 +61,8 @@ function FormResa() {
           <div>
             <label htmlFor="SelectRoom" className="labelSelectRoom"></label>
             <select
-              name="SelectRoom"
-              id="SelectRoom"
+              // name="SelectRoom"
+              // id="SelectRoom"
               className="SelectRoomInp"
               ref={salleRef}
             >
@@ -81,6 +82,30 @@ function FormResa() {
             ></FontAwesomeIcon>
             <div className="ligne4"></div>
           </div>
+
+          <div>
+            <label htmlFor="SelectMeal" className="labelSelectMeal"></label>
+            <select
+              // name="SelectRoom"
+              // id="SelectRoom"
+              className="SelectMealInp"
+              ref={mealRef}
+            >
+              <option>Selectionnez un repas</option>
+              {/* {resa.map((item) => (
+                <option key={`room-${item.ID_SALLE}`} value={item.ID_SALLE}>{item.NOM_SALLE}</option>
+              ))} */}
+              <option value="3001">Petit Déjeuner</option>
+              <option value="3002">Collation</option>
+              <option value="3003">Encas</option>
+            </select>
+            {/* <FontAwesomeIcon
+              icon={faHotel}
+              className="logo-SelectRoom"
+            ></FontAwesomeIcon> */}
+            <div className="ligne5"></div>
+          </div>
+
           <input type="submit" value="reserver" className="buttonInp" />
         </div>
       </form>
