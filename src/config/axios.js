@@ -1,7 +1,8 @@
 import axios from "axios";
+import { baseURL } from "./env";    
 
 const instance = axios.create({
-    baseURL:"http://localhost:8000"
+    baseURL
 })
 
 instance.defaults.headers.post["Content-Type"] = "application/json"
