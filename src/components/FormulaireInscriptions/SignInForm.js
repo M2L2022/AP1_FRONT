@@ -5,7 +5,7 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
+import axios from '../../config/axios';
 import React, {useRef} from 'react';
 
 function SignInForm() {
@@ -27,7 +27,7 @@ function SignInForm() {
         }
         console.log(body);
         try {
-           const res = await axios.post("http://localhost:8000/api/users",body)
+           const res = await axios.post("/user/users",body)
            console.log(res);
         } catch (error) {
             console.log(error);
