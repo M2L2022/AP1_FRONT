@@ -33,7 +33,7 @@ function FormResa() {
     };
 
     try {
-      axios.post("http://localhost:8000/reunions/reunion", body);
+      axios.post("/reunions/reunion", body);
     } catch (error) {
       console.log(error);
     }

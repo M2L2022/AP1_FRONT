@@ -3,7 +3,7 @@ import "./LoginForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import AuthContext, { useAuth } from "../../context/AuthProvider";
+import AuthContext, {  } from "../../context/AuthProvider";
 import axios  from "../../config/axios";
 import { Link } from 'react-router-dom';
 
