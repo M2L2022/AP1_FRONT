@@ -6,9 +6,10 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 
 function SignInForm() {
+    const [success, setSuccess] = useState("");
     const prenom = useRef();
     const nom = useRef();
     const email = useRef();
@@ -29,12 +30,14 @@ function SignInForm() {
         try {
            const res = await axios.post("http://localhost:8000/api/users",body)
            console.log(res);
+           setSuccess("Vous êtes connecté!");
         } catch (error) {
             console.log(error);
         }
     }
   return(
-      <div>
+
+    <>
         <form onSubmit={handleRegister}>
             <div class="containerForm">
                 <h2 class="titreForm">inscriptions</h2>
@@ -83,12 +86,13 @@ function SignInForm() {
                     <FontAwesomeIcon icon={faTrophy} class="logo-trophy"></FontAwesomeIcon>
                     <div class="ligne6"></div>
                 </div>
-
+                <p>{setSuccess}</p>
                 <input type='submit' Value='envoyer' class='buttonInp'/>
             </div>
         </form>
-    </div>
+    </>
     );
+    
 }
 
 export default SignInForm;

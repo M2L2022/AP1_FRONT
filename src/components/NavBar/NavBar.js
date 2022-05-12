@@ -15,8 +15,8 @@ const Navbar = () => {
     { text: "Inscriptions", chemin: "/Inscriptions" },
     { text: "Reservations", chemin: "/Reservations", disabled: !auth},
     { text: "Login", chemin: "/Login", disabled: auth },
+    { text: "Compte", chemin: "/compte", disabled: !auth },
     { text: "Log Out", chemin:"/", onClick: logOut, disabled: !auth },
-    { text: "Contact", chemin: "/contact" },
   ];
 
   const hamburger = useRef();
