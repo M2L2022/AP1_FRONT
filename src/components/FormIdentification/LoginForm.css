@@ -119,5 +119,28 @@
     left: 111px;
     top: 270px;
 }
+.link_resa {
+    font-family: var(--typo_texte);
+    color: var(--texte);
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+}
+.p_message {
+    font-family: var(--typo_texte);
+    color: var(--texte);
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    margin-top: 320px;
+}
+.link_accueil {
+    font-family: var(--typo_texte);
+    color: var(--texte);
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    margin-top: 320px;
+}
 
 

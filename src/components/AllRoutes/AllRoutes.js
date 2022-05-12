@@ -6,7 +6,7 @@ import SignIn from "../../pages/Inscriptions/SignIn";
 import NotFound from "../../pages/NotFound/NotFound";
 import Reservation from "../../pages/reservation/reservation";
 import React from "react";
-import Compte from "../../pages/compteUtilisateur/CompteUtilisateur";
+import Compte from "../../pages/Compte/CompteUser";
 
 const AllRoutes = () => {
     return ( 

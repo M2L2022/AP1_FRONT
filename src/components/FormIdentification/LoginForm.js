@@ -3,7 +3,7 @@ import "./LoginForm.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import AuthContext, {  } from "../../context/AuthProvider";
+import AuthContext from "../../context/AuthProvider";
 import axios  from "../../config/axios";
 import { Link } from 'react-router-dom';
 
@@ -56,7 +56,7 @@ function LoginForm() {
   return (
  
     <>
-    { success ? ( <div className="formLogin"> <h1>Vous etes connecté !!</h1> <br /> <p> <Link to="/">Retour à l'acceuil</Link> </p> </div> ) :(
+    { success ? ( <div className="formLogin"> <h2 className="titreForm">Vous etes connecté !!</h2 ><Link className="link_accueil" to="/">Retour à l'acceuil</Link></div> ) :(
 
       
     <div className="formLogin">
@@ -104,7 +104,9 @@ function LoginForm() {
             <div className="ligne4"></div>
           </div>
           <input type="submit" value="SE CONNECTER" className="buttonInp" />
-          <p>Besoin de réserver ?!<br/> <span className="line">{/*mettre la route pour l'inscription*/}<a href="http://localhost:3000/Inscriptions">S'inscrire</a></span></p>
+          <p className="p_message">Besoin de réserver ?!</p>
+          <br />
+          <Link className="link_resa" to="/inscriptions">S'INSCRIRE</Link>
         </div>
 
       </form>
