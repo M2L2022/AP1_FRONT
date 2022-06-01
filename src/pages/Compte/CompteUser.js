@@ -28,11 +28,11 @@ function Compte() {
             <div className="container_compte">
                 <h2>Mon compte</h2>
                 <ul>
-                    <li className='li_compte'>Prenom: {users[0]?.PRENOM_UTILISATEUR}</li>
-                    <li className='li_compte'>Nom: {users[0]?.NOM_UTILISATEUR}</li>
-                    <li className='li_compte'>Email: {users[0]?.MAIL_UTILISATEUR}</li>
-                    <li className='li_compte'>Telephone: 0{users[0]?.TELEPHONE_UTILISATEUR}</li>
-                    <li className='li_compte'>Ligue: {users[0]?.NOM_LIGUE}</li>
+                    <li className='li_compte'>Prenom: {users[0].PRENOM_UTILISATEUR}</li>
+                    <li className='li_compte'>Nom: {users[0].NOM_UTILISATEUR}</li>
+                    <li className='li_compte'>Email: {users[0].MAIL_UTILISATEUR}</li>
+                    <li className='li_compte'>Telephone: 0{users[0].TELEPHONE_UTILISATEUR}</li>
+                    <li className='li_compte'>Ligue: {users[0].NOM_LIGUE}</li>
                     {/* {users.map((user, index) => 
                         <li key={`user${index}`}>
                             {user.ID_UTILISATEUR}<br/>{user.NOM_UTILISATEUR}

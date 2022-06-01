@@ -33,17 +33,17 @@ function LoginForm() {
 
     try {
       const response = await axios.post("/user/identification", ({ email, password}));
-      console.log(JSON.stringify(response?.data));
+      //console.log(JSON.stringify(response?.data));
       setAuth({ email, password})
       setEmail("");
       setPassword("");
       setSuccess(true);
     } catch (err) {
-      if (!err?.response) {
+      if (!err.response) {
           setErrMsg("Le serveur ne répond pas")
-      } else if (err.response?.status === 400) {
+      } else if (err.response.status === 400) {
         setErrMsg("Mot de passe ou email oublié");
-      } else if (err.response?.status === 401) {
+      } else if (err.response.status === 401) {
         setErrMsg("Accés refusé");
       } else {
         setErrMsg("Authentification refusé")
