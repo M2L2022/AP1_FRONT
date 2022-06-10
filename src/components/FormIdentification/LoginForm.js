@@ -33,8 +33,9 @@ function LoginForm() {
 
     try {
       const response = await axios.post("/user/identification", ({ email, password}));
+      console.log(response.data.success);
       //console.log(JSON.stringify(response?.data));
-      setAuth({ email, password})
+      setAuth(response)
       setEmail("");
       setPassword("");
       setSuccess(true);

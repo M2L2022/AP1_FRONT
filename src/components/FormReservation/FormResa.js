@@ -4,9 +4,11 @@ import { faHotel } from "@fortawesome/free-solid-svg-icons";
 import { faCalendar } from "@fortawesome/free-solid-svg-icons";
 import React, { useRef, useEffect, useState } from "react";
 import axios from "../../config/axios";
+import { useAuth } from "../../context/AuthProvider";
 
 function FormResa() {
   const [resa, setResa] = useState([]);
+  const {auth} = useAuth();
   const getSalles = async () => {
     try {
       const res = await axios.get("/admin/salle/room");
@@ -29,7 +31,7 @@ function FormResa() {
       date: dateRef.current.value,
       salle: salleRef.current.value,
       repas: mealRef.current.value,
-      organisateur: 105, //passer id de l'utilisateur connecté
+      organisateur: auth.uid, //passer id de l'utilisateur connecté
     };
 
     try {
